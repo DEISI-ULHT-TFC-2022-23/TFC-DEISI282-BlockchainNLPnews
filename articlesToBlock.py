@@ -11,8 +11,8 @@ from unidecode import unidecode
 from langdetect import detect
 from langdetect import detect_langs, LangDetectException
 from garbageLinks import garbageTitles
-
-
+from hashDb import hashDb
+from deleteDbChain import deleteDbChain
 
 
 def process_url(url):
@@ -134,5 +134,10 @@ def articlesToBlock(urls):
                     print(f"Block not added because the text article has no features")
                     blockchain_info.clear()
                     time.sleep(1.7)
-
     
+    ##call hashing DB function and dropping the BD in case a hash cannot be generated
+    if not hashDb():
+        print("DB could not be hashed so its integrity cannot be guaranteed")
+        print("BD will be dropped to force a redownload next time links are extracted")
+        deleteDbChain()
+        time.sleep(3.7)  

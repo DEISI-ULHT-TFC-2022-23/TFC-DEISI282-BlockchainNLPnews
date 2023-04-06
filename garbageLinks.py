@@ -1,9 +1,3 @@
-from collections import OrderedDict
-import os
-from pymongo import MongoClient
-import time
-
-
 from pymongo import MongoClient
 from collections import OrderedDict
 import os

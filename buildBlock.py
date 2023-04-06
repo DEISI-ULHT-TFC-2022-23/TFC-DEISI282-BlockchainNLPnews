@@ -3,8 +3,9 @@ import pprint
 import blockchain
 import time
 
+
 def buildBlock(blockchainInfo):
-    time.sleep(10.7)   
+    time.sleep(1.7)   
     bc = blockchain.Blockchain()
     batch_size = 100
     ##os.system('cls')
@@ -26,6 +27,9 @@ def buildBlock(blockchainInfo):
             # print(articleLink , end='\n')
             # print(articleBody , end='\n')
             bc.mine_block(articleTitle, articleDate, articleAuthor, articleLink, articleBody)
+    
+    
+
               
     ##input("Final blockchain")
 

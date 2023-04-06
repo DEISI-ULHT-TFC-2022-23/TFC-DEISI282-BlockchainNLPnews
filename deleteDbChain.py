@@ -1,7 +1,7 @@
 import os
 from pymongo import MongoClient
 
-def deleteDbChain():
+def deleteDbChain(warning=True):
     # Create an instance of MongoClient and pass the connection string as an argument
     client = MongoClient("mongodb://localhost:27017/")
 
@@ -12,7 +12,8 @@ def deleteDbChain():
     if "blockchain_db" in database_names:
         # Drop the database
         client.drop_database("blockchain_db")
-        input("blockchain database was dropped")
+        input("blockchain database was dropped, DB will be redownloaded, press ENTER to continue")
 
-    else: 
-        input("blockchain database not found")
+
+    elif warning==True: 
+        input("blockchain database not found press ENTER to continue")

@@ -6,6 +6,7 @@ from datetime import datetime
 from deleteDbChain import *
 import os
 import requests
+from hashDb import compareHash
 
 
 from pymongo import MongoClient
@@ -25,7 +26,9 @@ def main():
            #function pipping, the output for the innermost function is passed the function before it, needs python >=3.8
            ## webscraping takes 2 args, max_sub_sitemaps says how many subsitemaps are extracted, and max_links how many total urls are extracted
            ## if one or both =0 they will extract all urls
+            compareHash()
             articlesToBlock(webScrapingAllArticles(1,10))
+            
 
         elif choice == '2':
             choice = input("Please insert a block index ")
