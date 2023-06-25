@@ -1,7 +1,0 @@
-i think it still has some problems with adding links when the blockchain db is already up
-
-also needs a way to control how many links it sends, if the links sent already exist in the bd then no new links will be added
-
-also needs to be tested for the map with the submaps
-
-apart from that start with nlp
