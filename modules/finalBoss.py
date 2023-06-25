@@ -82,11 +82,11 @@ def finalBoss(rawArticle, lemmatizedArticle):
     # prints the article with the highest average score
     if orderedArticles:
         highestArticle = orderedArticles[0]
+        if highestArticle["average_score"] <= 0.7:
+            print("Warning: The score of the highest article is below 0.7. This is not considered a high enough score, article is shown for debbuging only")
         print("Top Article Link:", highestArticle["article_link"])
         print("Top Average Score:", highestArticle["average_score"])
         input("Press ENTER to continue")
-    else:
-        input("No common articles with a score of 0.7 or higher in all four calculations.")
 
     # saves the results to JSON files
     output_Directory = "output Files"
