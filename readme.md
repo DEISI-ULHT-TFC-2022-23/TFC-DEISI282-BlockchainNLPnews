@@ -1,26 +1,28 @@
-# About the project
+# README
 
-The goal of this project was to create a prototype of a Python program that could be used to help combat fake news by using a combination of a Blockchain-structured DB and distance metric algorithms that measure the similarity between vectors or data points in a given space.
+## About the project
 
-The goal was to build a database of articles from reliable and trusted sources and store them in a Blockchain-structured DB. This database, due to its nature, cannot be modified without full access to the code (any attempts will force a full re-download of the database).
+Welcome to this exciting project that aims to tackle the notorious problem of fake news! Our mission is to create a Python program that combines the power of Blockchain-structured DB and distance metric algorithms to fight against misinformation.
 
-To verify the accuracy of the distance metric algorithms (cosine similarity, Euclidean distance, angular distance, Minkowski distance) used in the project, I've built tools to allow the manual classification (yes, manual; there was not enough time to build an automatic classification system) of the stored articles. Then, the user is able to see the accuracy of all the algorithms in interactive plots, and the results are stored in `.json` files that the user can inspect.
+Picture this: we're building a fortress of reliable and trustworthy articles, safeguarded within a Blockchain-structured DB. It's like a high-security vault where no modifications are allowed without the secret code (any attempts will trigger a full-scale re-download of the database, so don't even think about it!).
 
-Finally, the most important test is to allow the user to insert an article of their choosing from another source about a topic they know exists in the database, written in a completely different way, and see if the program returns the expected article.
+To ensure the accuracy of our distance metric algorithms (**Cosine similarity, Euclidean distance, angular distance, Minkowski distance**), we've even created a super fun manual classification system for the stored articles. Yes, it's a bit old-school, but we couldn't whip up an automatic one in time (oops!). You'll get to see the algorithms' performance in interactive plots and peek at the results in nifty `.json` files.
 
-## How the project works
+But wait, there's more! The real test of our project lies in your hands. You get to insert an article from another source, written in a completely different way, and witness the magic unfold. Will our program find the perfect match from our treasure trove? It's like finding a needle in a haystack, but with a touch of technological wizardry!
 
-The entire project revolves around 2 databases:
+### How the project works
 
-- The blockchain DB, that stores all the articles' information (title, URL, date, article body, etc.)
-- The classifiers DB, that stores all the information about the categories of each article. It stores the user's assigned category and the newly calculated category (more info below) (both of these DBs work using MongoDB)
+Behold, the heart and soul of our project: two mighty databases:
 
-The project has 3 main functionalities:
+**- The blockchain DB, the sanctuary of article information (title, URL, date, article body, and more).
+- The classifiers DB, the guardian of article categories. It's where we store the user-assigned categories and our cleverly calculated categories (both powered by MongoDB).**
 
-1. Asks the user how many articles they want to scrape from the [AP News](https://apnews.com/) website, performs cleaning operations like removing duplicates, cleaning the text, removing articles not in English, etc. Adds those articles to the blockchain DB and performs the required hashing operations of a blockchain.
+Now, brace yourself for the main attractions of our project:
 
-2. On the main menu, the user can choose to plot all the stored articles in the blockchain DB. But first, the user is required to assign 1 of 10 categories to each stored article. Then, the project will divide the articles into 2 sets (30% for testing, 70% for training), and it uses SBERT to reduce the text to 768 dimensions. After that, it will attempt to calculate the most fitting category for each article using the 4 distance metric algorithms and plot the results. It also saves those results into `.json` files. The goal of these plots is to help the user visualize the accuracy of the distance metric algorithms.
+1. **The Scraping Extravaganza**: We'll ask you how many articles you'd like us to scrape from the [AP News](https://apnews.com/) website. We'll go undercover and perform cleaning operations, sifting out duplicates, cleaning up text, and bidding farewell to non-English articles. These golden nuggets will then be added to the blockchain DB, with all the hashing operations of a blockchain in full swing. Impressive, right?
 
-3. Allows the user to insert the body of an article of their own choice and compare it to the articles stored in the blockchain DB. When this option is selected, the user is warned that they must copy the article body to their clipboard because that is where the program will extract from. Next, it will ask the user if there are more parts of the article body they want to insert from the clipboard, and it will keep asking this until the user answers "No". Ideally, this process would be automatic, but it is impossible to correctly analyze and extract only the article body from any webpage without bringing a lot of irrelevant text. Therefore, this task will unfortunately have to be left to the user. Once the user inputs the entire article, the program will display the URL of the page that, according to its calculations, is the most similar to the user's article. The ideal scenario is that the result of this operation is that both pages are about the same topic (if the Blockchain DB has such an article stored, of course).
+2. **The Category Carnival**: Step right up and witness the grand plot! You'll have the honor of assigning one of ten categories to each article. Once that's done, our project will split the articles into two sets (30% for testing, 70% for training). We'll employ the mighty SBERT to shrink the text to a compact 768 dimensions. Then, behold as we unleash the 4 distance metric algorithms to determine the most fitting category for each article. Prepare to be dazzled by interactive plots showcasing the accuracy of these algorithms. And don't worry, we've saved the results in snazzy `.json` files for your inspection.
 
-The project's main menu has several options, and the functionality of each one will be briefly described below:
+3. **The Article Adventure**: This is where you become the hero! You can insert the body of your own chosen article and witness the clash of the titans. But remember, before entering the realm, make sure to copy the article body to your clipboard. It's like the magical incantation that fuels our program. We'll keep asking if you have more parts of the article body to insert, just like a treasure hunt. **Sadly, we couldn't automate this process perfectly (it's harder than it sounds!)**. Once you've presented the entire article, brace yourself for the grand reveal. We'll display the URL of the page that our calculations deem as the most similar to your article. It's like uncovering a hidden gem, just for you!
+
+The main menu of our project is teeming with excitement and options. So, prepare to be entertained and embark on an extraordinary journey!
