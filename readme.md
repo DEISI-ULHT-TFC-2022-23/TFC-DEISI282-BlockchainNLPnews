@@ -30,15 +30,16 @@ Now, for the main attractions of our project:
 
 To get this project up and running, follow these 4 simple steps:
 
-1. download the project from this repository, extract it to your PC
+1. Make sure you have Python installed on your PC. I recommend Python 3.11. Head over to [python.org](https://www.python.org/downloads/release/python-3110/) and grab the installer. We didn't test this project with other Python versions, so let's stick to the recommended one for now.
 
-2. Start your favorite IDE. Mine happens to be Microsoft Visual Studio,  and open the project folder inside it
+2. MongoDB is your trusty sidekick. Install MongoDB on your system and make sure it's up and running. There are plenty of guides on the internet to help you with that. I followed this YouTube video: [MongoDB Setup Made Easy](https://www.youtube.com/watch?v=gB6WLkSrtJk).
 
-3. Make sure you have Python installed on your PC. I recommend Python 3.11. Head over to [python.org](https://www.python.org/downloads/release/python-3110/) and grab the installer. We didn't test this project with other Python versions, so let's stick to the recommended one for now.
+3. download the project from this repository, extract it to your PC
 
-4. MongoDB is your trusty sidekick. Install MongoDB on your system and make sure it's up and running. There are plenty of guides on the internet to help you with that. I followed this YouTube video: [MongoDB Setup Made Easy](https://www.youtube.com/watch?v=gB6WLkSrtJk).
+4. Start your favorite IDE. Mine happens to be Microsoft Visual Studio,  and open the project folder inside it
 
 Now, let's move on to the installation process. Open your terminal and navigate to the project folder. Then, execute the following lines of code:
+
 ```
 python -m venv Blockhouse
 
@@ -47,6 +48,10 @@ python -m venv Blockhouse
 pip install -r requirements.txt`
 ```
 We are creating a cozy virtual environment called "Blockhouse" to host all the necessary files. Then, we invite all the necessary requirements to join us.
+
+After doing all this we just need to select the virtual environment, if everything is working as expected you should be able to select the environment, the image bellow shows us how to do it
+![langdetect](https://github.com/FilipeCacho/BlockchainNLP/blob/main/readME%20images/virtualenv.png)
+
 
 Almost there! The final step is to open the project Folder in your IDE and start the code from the Main.py file. **Remember, starting the code from any other file will cause chaos and confusion. Stick to the Main.py file for a smooth experience.**
 
@@ -84,10 +89,11 @@ This project wasn't designed for commercial purposes, so I kindly request that y
 ## Known Issues
 1. It's not really a big deal, but more like a party of terminal clutter. Thanks to Matplotlib's quirks and the way those 5 plots were cooked up, if you start tickling them too much, the terminal might get a bit grumpy and spew out errors like the ones you see in the image below:
 
---Plot Errors--
+![plotwarnings](https://github.com/FilipeCacho/BlockchainNLP/blob/main/readME%20images/plotwarnings.png)
 
 Don't worry, though. The program won't throw a tantrum and crash on you. It will keep working as expected. I tried my best to silence those warning messages, but so far no luck
 
 2. "No import detected for langdetect" -> When you fire up the program for the first time, it might whine about not finding the 'langdetect' library. 
-Blame it on the IDE's cache mischief and the library's dance with the virtual environment. But here's the secret trick: if you run the program a second time right after that error, it should magically start working like a charm and take you straight to the main menu. Check out the image below to see what happens during the first run, courtesy of the pesky 'langdetect' library:
+Blame it on the IDE's cache mischief and the library's dance with the virtual environment. **But here's the secret trick: if you run the program a second time right after that error, it should magically start working like a charm and take you straight to the main menu.**
+Check out the image below to see what happens during the first run, courtesy of the pesky 'langdetect' library:
 ![langdetect](https://github.com/FilipeCacho/BlockchainNLP/blob/main/readME%20images/langdetect.png)
