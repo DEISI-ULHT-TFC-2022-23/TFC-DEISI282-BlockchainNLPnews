@@ -57,9 +57,9 @@ After doing all this we just need to select the virtual environment, if everythi
 
 Almost there! The final step is to open the project Folder in your IDE and start the code from the Main.py file. **Remember, starting the code from any other file will cause chaos and confusion. Stick to the Main.py file for a smooth experience.**
 
-### Overview of the main menu of the project
+## Overview of the main menu of the project
 
-Now, let's take a quick tour of the project's main menu. Each option is does a few things you should familiarize yourself with:
+Now, let's take a quick tour of the project's main menu. Each option does a few things you should familiarize yourself with:
 
 1.  **Scrap ApNews to add articles to the Blockchain DB**: You get to choose how many articles you want to extract from ApNews, and our program will clean them up, remove duplicates, and store them in the Blockchain.
 
@@ -93,9 +93,10 @@ This project wasn't designed for commercial purposes, so I kindly request that y
 
 ![plotwarnings](https://github.com/FilipeCacho/BlockchainNLP/blob/main/readME%20images/plotwarnings.png)
 
-Don't worry, though. The program won't throw a tantrum and crash on you. It will keep working as expected. I tried my best to silence those warning messages, but so far no luck
+Don't worry, though. The program won't throw a tantrum and crash on you. It will keep working as expected. I tried my best to silence those warning messages, but so far no luck.
 
-2. "No import detected for langdetect" -> When you fire up the program for the first time, it might whine about not finding the 'langdetect' library. 
+2. **"No import detected for langdetect"** -> When you fire up the program for the first time, it might whine about not finding the 'langdetect' library. 
+
 Blame it on the IDE's cache mischief and the library's dance with the virtual environment. **But here's the secret trick: if you run the program a second time right after that error, it should magically start working like a charm and take you straight to the main menu.**
 Check out the image below to see what happens during the first run, courtesy of the pesky 'langdetect' library:
 ![langdetect](https://github.com/FilipeCacho/BlockchainNLP/blob/main/readME%20images/langdetect.png)
