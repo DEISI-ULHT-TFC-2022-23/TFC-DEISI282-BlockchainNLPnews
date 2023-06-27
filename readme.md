@@ -16,7 +16,7 @@ Behold, the heart and soul of our project: two mighty databases:
 
 -  **The blockchain DB, the sanctuary of article information (title, URL, date, article body, and more).**
 
--  **The classifiers DB, the guardian of article categories. It's where we store the user-assigned categories and our cleverly calculated categories. **
+-  **The classifiers DB, the guardian of article categories. It's where we store the user-assigned categories and our cleverly calculated categories.**
 **(both powered by MongoDB).**
 
 Now, for the main attractions of our project:
@@ -24,7 +24,9 @@ Now, for the main attractions of our project:
 1.  **The Scraping**: We'll ask you how many articles you'd like us to scrape from the [AP News](https://apnews.com/) website. We'll go undercover and perform cleaning operations, sifting out duplicates, cleaning up text, and bidding farewell to non-English articles. The chosen articles will then be added to the Blockchain DB, with all the hashing operations of a blockchain in full swing.
 2.  **The Categories:** You'll have the honor of assigning one of ten categories to each article. Once that's done, our project will split the articles into two sets (30% for testing, 70% for training). We'll employ the mighty SBERT to shrink the text to a compact 768 dimensions. Then, we unleash the 4 distance metric algorithms to determine the most fitting category for each article. We will display the results in 5 interactive plots showcasing the accuracy of these algorithms. And don't worry, we've saved the results in snazzy `.json` files for your inspection.
 
-3.  **The Article Clash**: You can insert the body of your own chosen article and see what comes out from the other end. But remember, make sure to copy the article body to your clipboard. We'll keep asking if you have more parts of the article body to insert. **Sadly, we couldn't automate this process perfectly (it's harder than it sounds!)**. Once you've presented the entire article, we'll display the URL of the page that our calculations deem as the most similar to your article. It's like uncovering a hidden gem.
+3.  **The Article Clash**: You can insert the body of your own chosen article and see what comes out from the other end. But remember, make sure to copy the article body to your clipboard. 
+We'll keep asking if you have more parts of the article body to insert. **Sadly, we couldn't automate this process (it's harder than it sounds!)**. 
+Once you've presented the entire article, we'll display the URL of the page that our calculations deem as the most similar to your article.
 
 ## **How to install**
 
