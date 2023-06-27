@@ -2,9 +2,9 @@
 
 ## About the project
 
-Welcome to this exciting project that aims to tackle the notorious problem of fake news! Our mission is to create a Python program that combines the power of Blockchain-structured DB and distance metric algorithms to fight against misinformation.
+Welcome to this exciting project that aims to tackle the notorious problem of fake news! Our mission is to create a Python program that combines the power of Blockchain-structured database and distance metric algorithms to fight against misinformation.
 
-Picture this: we're building a fortress of reliable and trustworthy articles, safeguarded within a Blockchain-structured DB. It's like a high-security vault where no modifications are allowed without the secret code (any attempts will trigger a full-scale re-download of the database, so don't even think about it!).
+Picture this: we're building a fortress of reliable and trustworthy articles, safeguarded within a Blockchain-structured database. It's like a high-security vault where no modifications are allowed without the secret code (any attempts will trigger a full-scale re-download of the database, so don't even think about it!).
 
 To ensure the accuracy of our distance metric algorithms (**Cosine Similarity, Euclidean Distance, Angular Distance, Minkowski Distance**), we've even created a super fun manual classification system for the stored articles. Yes, it's a bit old-school, but I couldn't whip up an automatic one in time. You'll get to see the algorithms' performance in interactive plots and peek at the results in nifty `.json` files.
 
@@ -14,14 +14,14 @@ But wait, there's more! The real test of our project lies in your hands. You get
 
 Behold, the heart and soul of our project: two mighty databases:
 
--  **The blockchain DB, the sanctuary of article information (title, URL, date, article body, and more).**
+-  **The blockchain database, the sanctuary of article information (title, URL, date, article body, and more).**
 
--  **The classifiers DB, the guardian of article categories. It's where we store the user-assigned categories and our cleverly calculated categories.**
-**(both powered by MongoDB).**
+-  **The classifiers database, the guardian of article categories. It's where we store the user-assigned categories and our cleverly calculated categories.**
+**(both powered by Mongodatabase).**
 
 Now, for the main attractions of our project:
 
-1.  **The Scraping**: We'll ask you how many articles you'd like us to scrape from the [AP News](https://apnews.com/) website. We'll go undercover and perform cleaning operations, sifting out duplicates, cleaning up text, and bidding farewell to non-English articles. The chosen articles will then be added to the Blockchain DB, with all the hashing operations of a blockchain in full swing.
+1.  **The Scraping**: We'll ask you how many articles you'd like us to scrape from the [AP News](https://apnews.com/) website. We'll go undercover and perform cleaning operations, sifting out duplicates, cleaning up text, and bidding farewell to non-English articles. The chosen articles will then be added to the Blockchain database, with all the hashing operations of a blockchain in full swing.
 2.  **The Categories:** You'll have the honor of assigning one of ten categories to each article. Once that's done, our project will split the articles into two sets (30% for testing, 70% for training). We'll employ the mighty SBERT to shrink the text to a compact 768 dimensions. Then, we unleash the 4 distance metric algorithms to determine the most fitting category for each article. We will display the results in 5 interactive plots showcasing the accuracy of these algorithms. And don't worry, we've saved the results in snazzy `.json` files for your inspection.
 
 3.  **The Article Clash**: You can insert the body of your own chosen article and see what comes out from the other end. But remember, make sure to copy the article body to your clipboard. 
@@ -34,11 +34,11 @@ To get this project up and running, follow these 4 simple steps:
 
 1. Make sure you have Python installed on your PC. I recommend Python 3.11. Head over to [python.org](https://www.python.org/downloads/release/python-3110/) and grab the installer. We didn't test this project with other Python versions, so let's stick to the recommended one for now.
 
-2. MongoDB is your trusty sidekick. Install MongoDB on your system and make sure it's up and running. There are plenty of guides on the internet to help you with that. I followed this YouTube video: [MongoDB Setup Made Easy](https://www.youtube.com/watch?v=gB6WLkSrtJk).
+2. Mongodatabase is your trusty sidekick. Install Mongodatabase on your system and make sure it's up and running. There are plenty of guides on the internet to help you with that. I followed this YouTube video: [Mongodatabase Setup Made Easy](https://www.youtube.com/watch?v=gB6WLkSrtJk).
 
-3. download the project from this repository, extract it to your PC
+3. Download the project from this repository, extract it to your PC
 
-4. Start your favorite IDE. Mine happens to be Microsoft Visual Studio,  and open the project folder inside it
+4. Start your favorite IDE. Mine happens to be Microsoft Visual Studio Code, and open the project folder inside it
 
 Now, let's move on to the installation process. Open your terminal and navigate to the project folder. Then, execute the following lines of code:
 
@@ -61,32 +61,32 @@ Almost there! The final step is to open the project Folder in your IDE and start
 
 Now, let's take a quick tour of the project's main menu. Each option does a few things you should familiarize yourself with:
 
-1.  **Scrap ApNews to add articles to the Blockchain DB**: You get to choose how many articles you want to extract from ApNews, and our program will clean them up, remove duplicates, and store them in the Blockchain.
+1.  **Scrap ApNews to add articles to the Blockchain database**: You get to choose how many articles you want to extract from ApNews, and our program will clean them up, remove duplicates, and store them in the Blockchain.
 
-2.  **Ask user to insert the body of an article and compare it with all the stored articles**: We'll ask you to insert the body of an article, bit by bit, and our program will compare it with all the stored articles. We'll use our secret distance metric algorithms to find the best match for you. And guess what? We'll save the results in .json files so you can analyze them later.
+2.  **Ask user to insert the body of an article and compare it with all the stored articles**: We'll ask you to insert the body of an article, bit by bit, and our program will compare it with all the stored articles. We'll use our secret distance metric algorithms to find the best match for you. And guess what? We'll save the results in .`json` files so you can analyze them later.
 
 3.  **Divides the articles into 2 sets, 30% is testing articles, 70% is training articles sets and calculates new categories for 30% of the articles and plots them**: We'll divide the articles into two sets, one for testing and one for training. Then, we'll use our magical algorithms to calculate new categories for the testing articles. And then we'll create interactive plots to show you the results.
 
-4.  **Test the program with an already classified DB with 1k articles**: We have a pre-categorized Blockchain DB with 1137 articles ready to go. Just sit back, and watch it do all the work for you. We'll display the plots for you and the .json files with the results will be ready for you at the end.
+4.  **Test the program with an already classified database with 1k articles**: We have a pre-categorized Blockchain database with 1137 articles ready to go. Just sit back, and watch it do all the work for you. We'll display the plots for you and the .json files with the results will be ready for you at the end.
 
-5.  **Delete entire blockchain DB and stored articles (if it exists)**:  It's a reset button that wipes out the entire Blockchain DB and all the stored articles.
+5.  **Delete entire blockchain database and stored articles (if it exists)**:  It's a reset button that wipes out the entire Blockchain database and all the stored articles.
 
-6.  **Delete the entire DB that has the articles categories (if it exists)**: Made a mistake? No worries, we can fix it. This option allows you to delete the DB that contains the categories of each article. Just be careful not to create any inconsistencies.
+6.  **Delete the entire database that has the articles categories (if it exists)**: Made a mistake? No worries, we can fix it. This option allows you to delete the database that contains the categories of each article. Just be careful not to create any inconsistencies.
 
-7.  **Delete a block from the blockchain (testing purposes)**: With this option, you can delete any valid block from the Blockchain DB. It's like being a hacker, but with good intentions. Just remember, deleting a block triggers a re-download of the Blockchain DB.
+7.  **Delete a block from the blockchain (testing purposes)**: With this option, you can delete any valid block from the Blockchain database. It's like being a hacker, but with good intentions. Just remember, deleting a block triggers a re-download of the Blockchain database.
 
-8.  **Print the number of articles stored on each DB**: Want to see some numbers? This option prints the number of elements in each DB.
+8.  **Print the number of articles stored on each database**: Want to see some numbers? This option prints the number of elements in each database.
 
-9.  **Export blockchain to JSON File (if it exists, only for viewing purposes)**: You can export the current Blockchain DB to a mesmerizing .json file. Do whatever you want with it, it's all yours to explore.
+9.  **Export blockchain to JSON File (if it exists, only for viewing purposes)**: You can export the current Blockchain database to a mesmerizing .`json` file. Do whatever you want with it, it's all yours to explore.
 
-10.  **Export classifiers DB to JSON (if it exists, only for viewing purposes)**: This option lets you export the current Classifiers DB to a splendid .json file. Take a peek into the categories.
+10.  **Export classifiers database to JSON (if it exists, only for viewing purposes)**: This option lets you export the current Classifiers database to a splendid .`json` file. Take a peek into the categories.
 
-11.  **Backup Blockchain DB and classifiers DB to project folder**: Use this option to make a backup of your current Blockchain DB and Classifiers DB to the project folder. This allows you to take mess up with the databases without having any real consequences.
+11.  **Backup Blockchain database and classifiers database to project folder**: Use this option to make a backup of your current Blockchain database and Classifiers database to the project folder. This allows you to take mess up with the databases without having any real consequences.
 
-12.  **Restores saved Blockchain DB and classifiers DB to this system**: Made a mess? This option restores the saved backup files from option '11' and loads them into a proper mongo database.
+12.  **Restores saved Blockchain database and classifiers database to this system**: Made a mess? This option restores the saved backup files from option '11' and loads them into a proper mongo database.
 
 ## What You Can and Can't Do
-This project wasn't designed for commercial purposes, so I kindly request that you handle its contents with care. While you have the power to move or delete any of the .json files, tampering with other files might have unforseen consequences.
+This project wasn't designed for commercial purposes, so I kindly request that you handle its contents with care. While you have the power to move or delete any of the .`json` files, tampering with other files might have unforseen consequences.
 
 ## Known Issues
 1. It's not really a big deal, but more like a party of terminal clutter. Thanks to Matplotlib's quirks and the way those 5 plots were cooked up, if you start tickling them too much, the terminal might get a bit grumpy and spew out errors like the ones you see in the image below:

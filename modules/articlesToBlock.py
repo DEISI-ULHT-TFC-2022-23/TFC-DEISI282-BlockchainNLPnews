@@ -85,6 +85,10 @@ def process_url(url):
 
 
 def articlesToBlock(urls):
+
+    
+    # Rest of your code goes here
+
     
     os.system('cls')
 
