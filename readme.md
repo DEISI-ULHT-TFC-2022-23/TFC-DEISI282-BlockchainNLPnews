@@ -47,7 +47,7 @@ python -m venv Blockhouse
 
 .\Blockhouse\Scripts\activate
 
-pip install -r requirements.txt`
+pip install -r requirements.txt
 ```
 We are creating a cozy virtual environment called "Blockhouse" to host all the necessary files. Then, we invite all the necessary requirements to join us.
 
@@ -75,15 +75,15 @@ Now, let's take a quick tour of the project's main menu. Each option does a few 
 
 7.  **Delete a block from the blockchain (testing purposes)**: With this option, you can delete any valid block from the Blockchain DB. It's like being a hacker, but with good intentions. Just remember, deleting a block triggers a re-download of the Blockchain DB.
 
-8.  **Print the number of articles stored on each BD**: Want to see some numbers? This option prints the number of elements in each DB.
+8.  **Print the number of articles stored on each DB**: Want to see some numbers? This option prints the number of elements in each DB.
 
 9.  **Export blockchain to JSON File (if it exists, only for viewing purposes)**: You can export the current Blockchain DB to a mesmerizing .json file. Do whatever you want with it, it's all yours to explore.
 
 10.  **Export classifiers DB to JSON (if it exists, only for viewing purposes)**: This option lets you export the current Classifiers DB to a splendid .json file. Take a peek into the categories.
 
-11.  **Backup Blockchain DB and classifiers BD to project folder**: Use this option to make a backup of your current Blockchain DB and Classifiers DB to the project folder. This allows you to take mess up with the databases without having any real consequences.
+11.  **Backup Blockchain DB and classifiers DB to project folder**: Use this option to make a backup of your current Blockchain DB and Classifiers DB to the project folder. This allows you to take mess up with the databases without having any real consequences.
 
-12.  **Restores saved Blockchain DB and classifiers BD to this system**: Made a mess? This option restores the saved backup files from option '11' and loads them into a proper mongo database.
+12.  **Restores saved Blockchain DB and classifiers DB to this system**: Made a mess? This option restores the saved backup files from option '11' and loads them into a proper mongo database.
 
 ## What You Can and Can't Do
 This project wasn't designed for commercial purposes, so I kindly request that you handle its contents with care. While you have the power to move or delete any of the .json files, tampering with other files might have unforseen consequences.
