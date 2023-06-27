@@ -90,4 +90,4 @@ Don't worry, though. The program won't throw a tantrum and crash on you. It will
 
 2. "No import detected for langdetect" -> When you fire up the program for the first time, it might whine about not finding the 'langdetect' library. 
 Blame it on the IDE's cache mischief and the library's dance with the virtual environment. But here's the secret trick: if you run the program a second time right after that error, it should magically start working like a charm and take you straight to the main menu. Check out the image below to see what happens during the first run, courtesy of the pesky 'langdetect' library:
---img plot error--
+![langdetect](https://github.com/FilipeCacho/BlockchainNLP/blob/main/readME%20images/langdetect.png)
