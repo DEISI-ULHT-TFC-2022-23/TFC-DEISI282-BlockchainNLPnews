@@ -18,7 +18,7 @@ def main():
         print("--- Comparing & Plotting Operations ---")
         print("2.  Ask user to insert the body of an article and compare it with all the stored articles")
         print("3.  Divides the articles into 2 sets, 30% is testing articles, 70% is training articles sets and calculates new categories for 30% of the articles and plots them")
-        print("4.  Test the program with an already classified DB with 1k articles \n")
+        print("4.  Test the program with an already classified DB with 1337 articles \n")
         print("--- DB Operations --- ")
         print("5.  Delete entire blockchain DB and stored articles (if it exists)")
         print("6.  Delete the entire DB that has the articles categories (if it exists)")

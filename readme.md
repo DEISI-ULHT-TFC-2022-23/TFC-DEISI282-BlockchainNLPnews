@@ -17,7 +17,7 @@ Behold, the heart and soul of our project: two mighty databases:
 -  **The blockchain database, the sanctuary of article information (title, URL, date, article body, and more).**
 
 -  **The classifiers database, the guardian of article categories. It's where we store the user-assigned categories and our cleverly calculated categories.**
-**(both powered by Mongodatabase).**
+**(both powered by Mongo DB).**
 
 Now, for the main attractions of our project:
 
@@ -34,19 +34,21 @@ To get this project up and running, follow these 4 simple steps:
 
 1. Make sure you have Python installed on your PC. I recommend Python 3.11. Head over to [python.org](https://www.python.org/downloads/release/python-3110/) and grab the installer. We didn't test this project with other Python versions, so let's stick to the recommended one for now.
 
-2. Mongodatabase is your trusty sidekick. Install Mongodatabase on your system and make sure it's up and running. There are plenty of guides on the internet to help you with that. I followed this YouTube video: [Mongodatabase Setup Made Easy](https://www.youtube.com/watch?v=gB6WLkSrtJk).
+2. Mongo DB is your trusty sidekick. Install Mongo DB on your system and make sure it's up and running. There are plenty of guides on the internet to help you with that. I followed this YouTube video: [Mongo DB Setup Made Easy](https://www.youtube.com/watch?v=gB6WLkSrtJk).
 
 3. Download the project from this repository, extract it to your PC
 
 4. Start your favorite IDE. Mine happens to be Microsoft Visual Studio Code, and open the project folder inside it
 
-Now, let's move on to the installation process. Open your terminal and navigate to the project folder. Then, execute the following lines of code:
+Now, let's move on to the installation process. Open your terminal and navigate to the project folder. Then, execute each of the following lines of code:
 
 ```
 python -m venv Blockhouse
-
+```
+```
 .\Blockhouse\Scripts\activate
-
+```
+```
 pip install -r requirements.txt
 ```
 We are creating a cozy virtual environment called "Blockhouse" to host all the necessary files. Then, we invite all the necessary requirements to join us.
@@ -61,17 +63,17 @@ Almost there! The final step is to open the project Folder in your IDE and start
 
 Now, let's take a quick tour of the project's main menu. Each option does a few things you should familiarize yourself with:
 
-1.  **Scrap ApNews to add articles to the Blockchain database**: You get to choose how many articles you want to extract from ApNews, and our program will clean them up, remove duplicates, and store them in the Blockchain.
+1.  **Scrap ApNews to add articles to the Blockchain database**: You get to choose how many articles you want to extract from ApNews, and our program will clean them up, remove duplicates, and store them in the Blockchain. Each time you select this option we will add new articles to the database.
 
 2.  **Ask user to insert the body of an article and compare it with all the stored articles**: We'll ask you to insert the body of an article, bit by bit, and our program will compare it with all the stored articles. We'll use our secret distance metric algorithms to find the best match for you. And guess what? We'll save the results in .`json` files so you can analyze them later.
 
-3.  **Divides the articles into 2 sets, 30% is testing articles, 70% is training articles sets and calculates new categories for 30% of the articles and plots them**: We'll divide the articles into two sets, one for testing and one for training. Then, we'll use our magical algorithms to calculate new categories for the testing articles. And then we'll create interactive plots to show you the results.
+3.  **Divides the articles into 2 sets, 30% is testing articles, 70% is training articles sets and calculates new categories for 30% of the articles and plots them**: We'll divide the articles into two sets, one for testing and one for training. Then, we'll use our magical algorithms to calculate new categories for the testing articles. And then we'll create **interactive** plots to show you the results. **You can press on each dot on the plot to see more information about the calculations performed.**
 
-4.  **Test the program with an already classified database with 1k articles**: We have a pre-categorized Blockchain database with 1137 articles ready to go. Just sit back, and watch it do all the work for you. We'll display the plots for you and the .json files with the results will be ready for you at the end.
+4.  **Test the program with an already classified database with 1137 articles**: We have a pre-categorized Blockchain database with 1137 articles ready to go. Just sit back, and watch it do all the work for you. We'll display the **interactive** plots for you and the .json files with the results will be ready for you at the end.
 
-5.  **Delete entire blockchain database and stored articles (if it exists)**:  It's a reset button that wipes out the entire Blockchain database and all the stored articles.
+5.  **Delete entire blockchain database and stored articles (if it exists)**:  It's a reset button that wipes out the entire Blockchain database and all the stored articles. Why would you want to do this? Well, if you keep adding new articles to the database she might end up too big, and if you want to classify the articles yourself and see how the project behaves, you can just delete the blockchain database to start over and extract a small number of articles so that you can get right into the action.
 
-6.  **Delete the entire database that has the articles categories (if it exists)**: Made a mistake? No worries, we can fix it. This option allows you to delete the database that contains the categories of each article. Just be careful not to create any inconsistencies.
+6.  **Delete the entire database that has the articles categories (if it exists)**: This option allows you to delete the database that contains the categories of each article. When choosing option '3' the blockchain database and this database need to contain the same articles, if not it will create inconsistencies. To avoid that you can delete this database and the program will ask you to classify again all the articles, this way you can avoid possible inconsistencies.
 
 7.  **Delete a block from the blockchain (testing purposes)**: With this option, you can delete any valid block from the Blockchain database. It's like being a hacker, but with good intentions. Just remember, deleting a block triggers a re-download of the Blockchain database.
 

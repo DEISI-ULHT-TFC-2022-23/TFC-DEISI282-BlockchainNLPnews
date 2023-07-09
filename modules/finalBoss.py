@@ -29,6 +29,19 @@ def finalBoss(rawArticle, lemmatizedArticle):
     db = client["blockchain_db"]
     collection = db["chain"]
 
+    db_name = "blockchain_db"
+    collection_name = "chain"
+
+    # Check if the database and collection exist and if the connection is successful
+    if db.command("ping")["ok"] == 1 and db_name in client.list_database_names() and collection_name in db.list_collection_names():
+        print("Connection to the blockchain database successful")
+        time.sleep(0.7)
+    else:
+        print("Could not establish a connection with the blockchain DB or collection does not exist")
+        print ("Scrap news articles from the website using option '1' of the main menu to load information into the blockchain DB \n")
+        input("Press ENTER to continue")
+        return
+
     # retrieves the normalized bodies of all articles from the database
     trainArticles = list(collection.find({}, {"_id": 0, "article_title": 1, "article_link": 1, "normalized_body": 1}))
 
@@ -82,7 +95,7 @@ def finalBoss(rawArticle, lemmatizedArticle):
     # prints the article with the highest average score
     if orderedArticles:
         highestArticle = orderedArticles[0]
-        if highestArticle["average_score"] <= 0.7:
+        if highestArticle["average_score"] < 0.7:
             print("Warning: The score of the highest article is below 0.7. This is not considered a high enough score, article is shown for debbuging only")
         print("Top Article Link:", highestArticle["article_link"])
         print("Top Average Score:", highestArticle["average_score"])
