@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from scipy.spatial.distance import cosine, euclidean, minkowski
 from sklearn.preprocessing import normalize
 from sentence_transformers import SentenceTransformer
+import time
 
 # loads the SBERT model
 model = SentenceTransformer('bert-base-nli-mean-tokens')

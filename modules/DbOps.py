@@ -191,10 +191,6 @@ def restore1kBlockchain():
         client.close()
         return False
         
-
-    
-
-
 # restore classifiers_db
 def restore1kClassifiers():
     # connect to the MongoDB client
