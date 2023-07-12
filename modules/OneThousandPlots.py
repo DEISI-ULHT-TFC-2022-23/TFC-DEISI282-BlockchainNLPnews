@@ -42,7 +42,7 @@ def aThousandPlots():
     if not restore1kClassifiers() or not restore1kBlockchain():
         return
 
-    print ("You can press on the dots on the plots to get more information about the article it represents, the program will show a total of 5 plots and will continue after you close the current open plot \n")
+    print ("You can press on the dots on the plots to get more information about the article it represents, the program will show a total of 5 interactive plots and you can press on the dots and will continue after you close the current open plot \n")
     input("Press ENTER to continue \n")
 
     try:

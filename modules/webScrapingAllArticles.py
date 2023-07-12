@@ -4,21 +4,25 @@ import time
 from .garbageLinks import *
 import os
 
-mainSitemapUrl = "https://apnews.com/sitemap/sitemap_index.xml"
+mainSitemapUrl = "https://apnews.com/sitemap.xml"
 
 def webScrapingAllArticles():
 
     os.system('cls')
+    skipfirst=False
 
-    print("This program extracts and processes articles from the appnews website, the articles on the website are stored in multiple XML's files and each file contains a few hundred articles")
-    print("You will be asked to specify the number of XML's to extract and the number of URLS to extract, for example:")
-    print("If you ask for 2 XML's and 100 articles, the program will proccess 2*100 URL's, some articles maybe be excluded from the final results for multiple reasons")
-    print("For example for not being in English or for already existing in the BD \n")
+    print("This program extracts and processes articles from the apnews website, the articles on the website are stored in multiple XML files and each file contains a few hundred articles")
+    print("You will be asked to specify the number of XMLs to extract and the number of URLs to extract, for example:")
+    print("If you ask for 2 XMLs and 100 articles, the program will process 2*100 URLs. Some articles may be excluded from the final results for various reasons.")
+    print("For example, if they are not in English or if they already exist in the database. \n")
 
     while True:
         try:
-            numXmls = int(input("How many XMLS do you want to extract: "))
+            numXmls = int(input("How many XMLs do you want to extract: "))
             if numXmls > 0:
+                if numXmls==1:
+                    numXmls+=1
+                    skipfirst=True
                 break
             else:
                 print("Please enter a positive number.")
@@ -27,7 +31,7 @@ def webScrapingAllArticles():
 
     while True:
         try:
-            maLinks = int(input("How many URLS do you want to extract: "))
+            maLinks = int(input("How many URLs do you want to extract: "))
             if maLinks > 0:
                 break
             else:
@@ -46,6 +50,9 @@ def webScrapingAllArticles():
     subSitemapUrls = subSitemapUrls[-numXmls:] if numXmls > 0 else subSitemapUrls
 
     for sub_sitemap_url in subSitemapUrls:
+        if sub_sitemap_url == "https://apnews.com/sitemap-latest.xml":
+            continue  # Skip processing this XML if it matches the specified URL
+
         response = requests.get(sub_sitemap_url)
         subSoup = BeautifulSoup(response.content, "xml")
 
@@ -58,14 +65,17 @@ def webScrapingAllArticles():
 
         if maLinks > 0 and len(allUrls) >= maLinks:
             break
-    
+
+    if skipfirst:
+        numXmls=1
     os.system('cls')
     # Processes the extracted URLs
-    print("The total number of URLs available to be extracted in this ",numXmls,"sitemap/s is: ", len(allUrls)," but only ",numXmls*maLinks, "will be processed")
+    print("The total number of URLs available to be extracted in this", numXmls, "sitemap/s is:", len(allUrls), "but only", numXmls * maLinks, "will be processed")
     time.sleep(5)
 
     if maLinks > 0:
-        cleanedArticleUrls = garbageLinks(allUrls,maLinks*numXmls)
+       
+        cleanedArticleUrls = garbageLinks(allUrls, maLinks * numXmls)
     else:
         cleanedArticleUrls = garbageLinks(allUrls)
 

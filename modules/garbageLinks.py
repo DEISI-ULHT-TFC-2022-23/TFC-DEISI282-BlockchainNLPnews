@@ -19,7 +19,7 @@ def garbageLinks(uniqueList,maxLinks=0):
     finalList=[]
 
     # Define the substrings or patterns that should be excluded
-    garbage = {'https://apnews.com/hub/', 'https://apnews.com/video'}
+    garbage = {'https://apnews.com/hub/', 'https://apnews.com/video','https://apnews.com/test-gallery'}
 
     # Filter out URLs that contain any of the garbage substrings
     cleanedList = [url for url in uniqueList if not any(ignore in url for ignore in garbage)]

@@ -727,7 +727,7 @@ def sBERT():
                 input("Press ENTER to continue")
                 return
 
-            elif existingClassifiersRecords != existingChainRecords:
+            elif existingClassifiersRecords != existingChainRecords+1 and existingClassifiersRecords != existingChainRecords:
                 print("The total number of articles in the classifiers BD (", existingClassifiersRecords, ") does not match the total number of articles in the blockchain BD (", existingChainRecords,")")
                 print("You can either: \n")
                 print(" - Classify the remaining articles by selecting 'n' on option '3' of the main menu; \n")
@@ -749,7 +749,7 @@ def sBERT():
                 input("Press ENTER to continue")
                 return
             
-            elif existingClassifiersRecords>existingChainRecords :
+            elif existingClassifiersRecords>existingChainRecords+1 and existingClassifiersRecords>existingChainRecords :
                 print("The total number of articles in the classifiers BD (", existingClassifiersRecords, ") exceeds the total number of articles in the blockchain BD (", existingChainRecords, ")")
                 print("This will cause inconsistencies, please drop the classifiers BD and classify the articles from the start")
                 input("Press ENTER to continue")
