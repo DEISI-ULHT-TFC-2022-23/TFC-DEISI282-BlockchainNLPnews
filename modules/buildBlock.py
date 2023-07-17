@@ -6,7 +6,7 @@ from .normalizeString import normalizeString
 
 def buildBlock(blockchainInfo):
 
-    time.sleep(1.7)
+    time.sleep(0.3)
 
     # new instance of the blockchain
     bc = Blockchain() 
