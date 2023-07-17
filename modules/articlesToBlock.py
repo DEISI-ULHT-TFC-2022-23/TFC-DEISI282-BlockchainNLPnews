@@ -17,75 +17,75 @@ from modules.DbOps import deleteDbChain
 
 def process_url(url):
     try:
-        html_content = requests.get(url).text
+        response = requests.get(url)
+        
+        # Check if the response was successful
+        if response is not None and response.status_code == 200:
+            html_content = response.text
+            soup = BeautifulSoup(html_content, "html.parser")
+            
+            # Find the title tag in h1 or h2.
+            h1Tag = soup.find('h1', class_=lambda x: x and 'Page-headline' in x)
+            h2Tag = soup.find('h2', class_=lambda x: x and 'Page-headline' in x)
 
-        soup = BeautifulSoup(html_content, "html.parser")
+            if h1Tag:
+                title = h1Tag.text
+            elif h2Tag:
+                title = h2Tag.text
+            else:
+                title = "Title not found"
 
-        # Find the title tag in h1 or h2.
-        h1Tag = soup.find('h1', class_=lambda x: x and 'Page-headline' in x)
-        h2Tag = soup.find('h2', class_=lambda x: x and 'Page-headline' in x)
+            normalizedTitle = unidecode(title)
+            cleanedTitle = re.sub(r"[^a-zA-Z0-9,.?!;:()\'\"/\\\-_ \n\t]", "", normalizedTitle)
+            cleanedTitle = re.sub(r"\n{2,}", " ", cleanedTitle)
 
-        if h1Tag:
-            title = h1Tag.text
-        elif h2Tag:
-            title = h2Tag.text
-        else:
-            title = "Title not found"
-
-        normalizedTitle = unidecode(title)
-        cleanedTitle = re.sub(r"[^a-zA-Z0-9,.?!;:()\'\"/\\\-_ \n\t]", "", normalizedTitle)
-        cleanedTitle = re.sub(r"\n{2,}", " ", cleanedTitle)
-
-       # Find the publication date.
-        publishDateTag = soup.find('div', class_='Page-datePublished')
-        if publishDateTag:
-            timestampTag = publishDateTag.find('span', {'data-date': True})
-            if timestampTag and 'data-date' in timestampTag.attrs:
-                publicationDate = timestampTag['data-date'].strip()
+            # Find the publication date.
+            publishDateTag = soup.find('div', class_='Page-datePublished')
+            if publishDateTag:
+                timestampTag = publishDateTag.find('span', {'data-date': True})
+                if timestampTag and 'data-date' in timestampTag.attrs:
+                    publicationDate = timestampTag['data-date'].strip()
+                else:
+                    publicationDate = "Publication date not found"
             else:
                 publicationDate = "Publication date not found"
+
+            # Find the author.
+            authorTag = soup.find('div', class_="Page-authors")
+            authorName = authorTag.find('span', class_="Link").text if authorTag else "Author not found"
+
+            # Find the article text.
+            articleTags = soup.find_all('p')
+            if articleTags:
+                finalArticle = ""
+                for article in articleTags:
+                    for hyperlinks in article.find_all('a'):
+                        hyperlinks.replace_with(hyperlinks.get_text())
+                    finalArticle += article.text
+                normalizedText = unidecode(finalArticle)
+                cleanedText = re.sub(r"[^a-zA-Z0-9,.?!;:()\'\"/\\\-_ \n\t]", "", normalizedText)
+                cleanedText = cleanedText.translate(str.maketrans("", "", "\\"))
+                cleanedText = re.sub(r"\n{2,}", " ", cleanedText)
+            else:
+                cleanedText = "No article text found"
+
+            # Add the extracted information to the blockchainInfo list.
+            return [cleanedTitle, publicationDate, authorName, url, cleanedText]
+        
         else:
-            publicationDate = "Publication date not found"
-
-
-
-
-
-
-        # Find the author.
-        authorTag = soup.find('div', class_="Page-authors")
-        authorName = authorTag.find('span', class_="Link").text if authorTag else "Author not found"
-
-       # Find the article text.
-        articleTags = soup.find_all('p')
-        if articleTags:
-            finalArticle = ""
-            for article in articleTags:
-                for hyperlinks in article.find_all('a'):
-                    hyperlinks.replace_with(hyperlinks.get_text())
-                finalArticle += article.text
-            normalizedText = unidecode(finalArticle)
-            cleanedText = re.sub(r"[^a-zA-Z0-9,.?!;:()\'\"/\\\-_ \n\t]", "", normalizedText)
-            cleanedText = cleanedText.translate(str.maketrans("", "", "\\"))
-            cleanedText = re.sub(r"\n{2,}", " ", cleanedText)
-        else:
-            cleanedText = "No article text found"
-
-
-
-        # Add the extracted information to the blockchainInfo list.
-        return [cleanedTitle, publicationDate, authorName, url, cleanedText]
+            return None
 
     except requests.exceptions.RequestException:
         # Handle the loss of internet connection or any requests-related exception
-        print("Error: Failed to make the request or loss of internet connection.")
-        print("DB will be dropped to ensure there is no data inconsistency, this will force a complete redownload next time links are extracted")
-        deleteDbChain()
-        return
+        return None
 
-    except Exception as e:
+    except AttributeError:
+        # Handle the case when 'NoneType' object has no attribute 'text'
+        return None
+
+    except Exception:
         # Handle any other exception that may occur during the processing
-        print(f"Error: {e}")
+        return None
 
 
 def articlesToBlock(urls):
@@ -111,9 +111,8 @@ def articlesToBlock(urls):
                     for item in result:
                         blockchainInfo.append(item)
 
-            except Exception as e:
-                print(f"Error while processing {url}: {e}")
-                time.sleep(1.7)
+            except Exception:
+                continue
 
             remaining_urls = numUrls - i - 1
 
@@ -148,7 +147,7 @@ def articlesToBlock(urls):
                     print("Block not added because the article text is empty")
                     blockchainInfo.clear()
 
-            except LangDetectException as e:
+            except LangDetectException:
                 print("Block not added because the text article has no features")
                 blockchainInfo.clear()
 
