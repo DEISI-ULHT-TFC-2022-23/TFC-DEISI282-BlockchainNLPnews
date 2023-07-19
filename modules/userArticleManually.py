@@ -9,7 +9,7 @@ def userArticleManually():
     text = ''
     normalized_text = ''
     while True:
-        input("The next text in the clipboard after pressing ENTER on this program will be processed (press ENTER to continue)")
+        input("\n The next text in the clipboard after pressing ENTER on this program will be processed (press ENTER to continue)")
         # Gets the input text from the clipboard
         userInput = pyperclip.paste()
         # Removes hyperlinks, tags, and other junk text
@@ -22,7 +22,7 @@ def userArticleManually():
         print("Text copied to variable:\n", text)
         # Checks if the user wants to add more text or stop
         while True:
-            userChoice = input('Do you want to add more text? (y/n): ')
+            userChoice = input(' \n Do you want to add more text? (y/n): ')
             if userChoice.lower() == 'n' or userChoice.lower() == 'y':
                 break
             os.system('cls')
@@ -30,7 +30,7 @@ def userArticleManually():
         if userChoice.lower() == 'n':
             break
         # If the user wants to add more text, add a space and ask for the next paste
-        print("Please copy the next text to the clipboard to pass it to the program")
+        print("\n Please copy the next text to the clipboard to pass it to the program")
         text += ' '
 
     # Normalizes the final text
